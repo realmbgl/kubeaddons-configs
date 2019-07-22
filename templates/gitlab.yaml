@@ -23,12 +23,17 @@ spec:
     version: 2.0.3
     values: |
       ---
-      certmanager:
-        install: false
-      gitlab-runner:
-        install: false
+      certmanager-issuer:
+        email: <ISSUER EMAIL>
+        # Need to specify the image as a workaround for https://gitlab.com/charts/gitlab/issues/1272.
+        image:
+          repository: gcr.io/google_containers/hyperkube
+          tag: v1.14.0
       global:
         hosts:
-          domain: gitlab.local
-        ingress:
-          configureCertmanager: false
+          gitlab:
+            name: <GITLAB DOMAIN>
+          minio:
+            name: <MINIO DOMAIN>
+          registry:
+            name: <REGISTRY DOMAIN>

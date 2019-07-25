@@ -25,6 +25,11 @@ LetsEncrypt requires that GitLab's services be exposed on publicly resolvable ho
    helm repo update
    helm upgrade --install gitlab gitlab/gitlab -f gitlab-values.yaml
    ```
+   * ***NOTE:*** After executing this step, certmanager will attempt to issue LetsEncrypt certificates for the domains you provided in the chart configuration.
+     LetsEncrypt won't be able to validate these certificates until the next step is complete, and LetsEncrypt imposes a rate limit on failed validations.
+     In order to avoid reaching this limit, you are advised to scale the certmanager deployment down to 0 after this step, and scale it back up to 1 after the following step.
+     If you have already reached this limit, you can scale down certmanager, wait an hour for the limit to reset, and then scale it back up.
+     For more on LetsEncrypt rate limits, see https://letsencrypt.org/docs/rate-limits/.
 1. Update your external DNS entries to resolve to the gitlab-nginx-ingress-controller service's external IP(s), once it's available.
    This is necessary in order for certmanager to issue certificates that LetsEncrypt can verify.
    * If using AWS, you can use Route53 to create an A record that is an alias of your ingress's ELB. https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html

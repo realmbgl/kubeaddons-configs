@@ -40,9 +40,7 @@ spec:
     - name: none
       enabled: true
   chartReference:
-    chart: velero
-    repo: https://mesosphere.github.io/charts/staging
-    version: 2.2.2
+    chart: /Users/main/go/src/github.com/mesosphere/charts/staging/velero
     values: |
       ---
       configuration:
@@ -54,6 +52,7 @@ spec:
             region: "fallback"     # enables non-production fallback minio backend
             s3ForcePathStyle: true # allows usage of fallback backend
             s3Url: http://minio.velero.svc:9000
+            insecureSkipVerify: true
         volumeSnapshotLocation:
           name: "aws"
           config:

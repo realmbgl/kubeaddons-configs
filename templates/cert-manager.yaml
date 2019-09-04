@@ -7,9 +7,10 @@ metadata:
     kubeaddons.mesosphere.io/name: cert-manager
     certmanager.k8s.io/disable-validation: true
   annotations:
-    appversion.kubeaddons.mesosphere.io/cert-manager: "v0.9.1"
+    appversion.kubeaddons.mesosphere.io/cert-manager: "v0.10.0-alpha.0"
     # TODO: endpoint.kubeaddons.mesosphere.io/traefik: "/ops/portal/traefik"
-    docs.kubeaddons.mesosphere.io/traefik: "https://docs.cert-manager.io/en/release-0.9/"
+    # TODO: Change docs link on v0.10.0 release.
+    docs.kubeaddons.mesosphere.io/traefik: "https://docs.cert-manager.io/en/master/"
 spec:
   kubernetes:
     minSupportedVersion: v1.7.0
@@ -23,6 +24,6 @@ spec:
   chartReference:
     chart: cert-manager
     repo: https://charts.jetstack.io
-    version: 0.9.1
+    version: 0.10.0-alpha.0
     # values: |
     #   ---

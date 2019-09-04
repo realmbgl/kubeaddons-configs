@@ -2,10 +2,9 @@ apiVersion: kubeaddons.mesosphere.io/v1alpha1
 kind: Addon
 metadata:
   name: cert-manager
-  namespace: cert-manager
+  namespace: kubeaddons
   labels:
     kubeaddons.mesosphere.io/name: cert-manager
-    certmanager.k8s.io/disable-validation: true
   annotations:
     appversion.kubeaddons.mesosphere.io/cert-manager: "v0.10.0-alpha.0"
     # TODO: endpoint.kubeaddons.mesosphere.io/traefik: "/ops/portal/traefik"
